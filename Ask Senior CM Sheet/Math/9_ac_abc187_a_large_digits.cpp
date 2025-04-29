@@ -5,10 +5,20 @@ using namespace std;
 const int mod = 1e9 + 7;
 const int INF = 1e9;
 
+int getSum(int n){
+    int s = 0;
+    while(n > 0){
+        s += (n % 10);
+        n /= 10;
+    }
+    return s;
+}
 
 void solve() {
-    
-
+    int a, b;
+    cin>>a>>b;
+    int ans = max(getSum(a), getSum(b));
+    cout<<ans;
 }
 
 signed main() {

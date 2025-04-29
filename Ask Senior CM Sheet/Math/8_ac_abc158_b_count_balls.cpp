@@ -7,8 +7,15 @@ const int INF = 1e9;
 
 
 void solve() {
-    
+    int n, a, b;
+    cin>>n>>a>>b;
 
+    int qu = n / (a + b);
+    int rem = n % (a + b);
+    int ans = qu * a;
+    if(rem <= a) ans += rem;
+    else ans += a;
+    cout<<ans;
 }
 
 signed main() {

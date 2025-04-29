@@ -7,20 +7,22 @@ const int INF = 1e9;
 
 
 void solve() {
-    
+    int n;
+    cin>>n;
+
+    cout<<"2 "<<(n-1)<<"\n";
 
 }
 
 signed main() {
     ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     for (int i = 1; i <= t; i++) {
         solve();
     }
     return 0;
 }
-
-
-

@@ -7,8 +7,20 @@ const int INF = 1e9;
 
 
 void solve() {
-    
+    int n;
+    cin>>n;
+    vector<int> v(n);
+    for(int i=0; i<n; i++){
+        cin>>v[i];
+    }
 
+    map<int, int> mp;
+    int ans = 0;
+    for(int i=0; i<n; i++){
+        mp[v[i]]++;
+        ans += ((i+1) - mp[v[i]]);
+    }
+    cout<<ans;
 }
 
 signed main() {

@@ -3,35 +3,34 @@
 using namespace std;
 
 const int mod = 1e9 + 7;
+const int INF = 1e9;
+
+int gcd(int a, int b) {
+    if (b == 0) return a;
+    return gcd(b, a % b);
+}
 
 
 void solve() {
     int n;
     cin>>n;
 
-    vector<int> dp(n+1);
-    dp[0] = 1;
-
+    int sum = 0;
     for(int i=1; i<=n; i++){
-        int sum = 0;
-        for(int j=1; j<=6; j++){
-            if(i-j >= 0){
-                sum = (sum + dp[i-j]) % mod;
+        for(int j=1; j<=n; j++){
+            for(int k=1; k<=n; k++){
+                sum += gcd(i, gcd(j, k));
             }
         }
-        dp[i] = sum;
     }
+    cout<<sum;
 
-    cout<<dp[n];
 }
 
 signed main() {
     ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-    #ifndef ONLINE_JUDGE 
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt","w",stdout);
-    freopen("Error.txt","w",stderr);
-    #endif
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
     int t = 1;
     // cin >> t;

@@ -7,7 +7,11 @@ const int INF = 1e9;
 
 
 void solve() {
-    
+    int n;
+    cin>>n;
+
+    if(n & 1) cout<<9<<" "<<(n-9);
+    else cout<<4<<" "<<(n-4);
 
 }
 
