@@ -5,21 +5,16 @@ using namespace std;
 const int mod = 1e9 + 7;
 const int INF = 1e9;
 
-int gcd(int x, int y){
-    if(y == 0) return x;
-    return gcd(y, x%y);
-}
 
 void solve() {
-    int n;
-    cin>>n;
-
-    for(int x=2; ;x++){
-        int y = n-1-x;
-        if(gcd(x,y) == 1){
-            cout<<x<<" "<<y<<" 1\n";
-            break;
-        }
+    int a, b;
+    cin>>a>>b;
+    if(b <= 1) cout<<"NO\n";
+    else{
+        cout<<"YES\n";
+        int x = a;
+        int y = (2 * b - 1) * a;
+        cout<<x<<" "<<y<<" "<<(x+y)<<"\n";
     }
 
 }

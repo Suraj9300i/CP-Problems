@@ -5,21 +5,20 @@ using namespace std;
 const int mod = 1e9 + 7;
 const int INF = 1e9;
 
-int gcd(int x, int y){
-    if(y == 0) return x;
-    return gcd(y, x%y);
-}
 
 void solve() {
-    int n;
-    cin>>n;
+    int a, b;
+    cin>>a>>b;
 
-    for(int x=2; ;x++){
-        int y = n-1-x;
-        if(gcd(x,y) == 1){
-            cout<<x<<" "<<y<<" 1\n";
-            break;
+    int diff = b - a;
+    if(diff >= 10) cout<<"0";
+    else{
+        int mul = 1;
+        a %= 10;
+        for(int i=1; i<=diff; i++){
+            mul *= (a+i);
         }
+        cout<<(mul % 10);
     }
 
 }
@@ -28,7 +27,7 @@ signed main() {
     ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     for (int i = 1; i <= t; i++) {
         solve();
     }

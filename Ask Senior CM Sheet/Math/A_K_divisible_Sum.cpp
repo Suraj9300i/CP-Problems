@@ -11,17 +11,12 @@ int gcd(int x, int y){
 }
 
 void solve() {
-    int n;
-    cin>>n;
+    int n,k;
+    cin>>n>>k;
 
-    for(int x=2; ;x++){
-        int y = n-1-x;
-        if(gcd(x,y) == 1){
-            cout<<x<<" "<<y<<" 1\n";
-            break;
-        }
-    }
-
+    int x = k < n ? ((n + k - 1) / k) * k : k;
+    int ans = (x + n - 1) / n;
+    cout<<ans<<"\n";
 }
 
 signed main() {

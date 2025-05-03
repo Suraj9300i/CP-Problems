@@ -11,17 +11,26 @@ int gcd(int x, int y){
 }
 
 void solve() {
-    int n;
-    cin>>n;
+    int a, b, c, d;
+    cin>>a>>b>>c>>d;
 
-    for(int x=2; ;x++){
-        int y = n-1-x;
-        if(gcd(x,y) == 1){
-            cout<<x<<" "<<y<<" 1\n";
-            break;
-        }
+    if(a%b==0 && c%d == 0 && a/b == c/d){
+        cout<<"0\n";
+        return;
     }
 
+    int x = a * d;
+    int y = b * c;
+    int g = gcd(x, y);
+    x /= g;
+    y /= g;
+    
+    int lcm = (x * y) / gcd(x, y);
+
+    int ans = 0;
+    if(lcm != x) ans++;
+    if(lcm != y) ans++;
+    cout<<ans<<"\n";
 }
 
 signed main() {

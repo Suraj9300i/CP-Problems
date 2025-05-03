@@ -5,23 +5,29 @@ using namespace std;
 const int mod = 1e9 + 7;
 const int INF = 1e9;
 
-int gcd(int x, int y){
-    if(y == 0) return x;
-    return gcd(y, x%y);
-}
 
 void solve() {
     int n;
     cin>>n;
+    vector<int> v(n);
+    int cnt = 0;
+    for(int i=0; i<n; i++){
+        cin>>v[i];
+        if(v[i] == 2) cnt++;
+    }
 
-    for(int x=2; ;x++){
-        int y = n-1-x;
-        if(gcd(x,y) == 1){
-            cout<<x<<" "<<y<<" 1\n";
+    int ans = -1;
+    int cur = 0;
+    for(int i=0; i<n-1; i++){
+        if(v[i] == 2) cur++;
+        int rem = cnt - cur;
+        if(cur == rem){
+            ans = i+1;
             break;
         }
     }
 
+    cout<<(cnt > 0 ? ans : 1)<<"\n";
 }
 
 signed main() {

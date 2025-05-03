@@ -1,3 +1,5 @@
+
+
 #include<bits/stdc++.h>
 #define int long long
 using namespace std;
@@ -5,23 +7,19 @@ using namespace std;
 const int mod = 1e9 + 7;
 const int INF = 1e9;
 
-int gcd(int x, int y){
-    if(y == 0) return x;
-    return gcd(y, x%y);
-}
 
 void solve() {
-    int n;
-    cin>>n;
+    string str;
+    cin>>str;
 
-    for(int x=2; ;x++){
-        int y = n-1-x;
-        if(gcd(x,y) == 1){
-            cout<<x<<" "<<y<<" 1\n";
-            break;
-        }
+    const string pi = "314159265358979323846264338327";
+    int n = str.size();
+    int ans = 0;
+    for(int i=0; i<n; i++){
+        if(str[i] == pi[i]) ans++;
+        else break;
     }
-
+    cout<<ans<<"\n";
 }
 
 signed main() {

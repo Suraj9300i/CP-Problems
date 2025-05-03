@@ -5,20 +5,24 @@ using namespace std;
 const int mod = 1e9 + 7;
 const int INF = 1e9;
 
-int gcd(int x, int y){
-    if(y == 0) return x;
-    return gcd(y, x%y);
+bool isPrime(int n){
+    for(int i=2; i*i<=n; i++){
+        if(n%i == 0) return false;
+    }
+    return true;
 }
 
 void solve() {
     int n;
     cin>>n;
 
-    for(int x=2; ;x++){
-        int y = n-1-x;
-        if(gcd(x,y) == 1){
-            cout<<x<<" "<<y<<" 1\n";
-            break;
+    if(n != 1 && n & 1) cout<<"1";
+    else{
+        for(int i=1; ;i++){
+            if(!isPrime(n * i + 1)){
+                cout<<i;
+                break;
+            }
         }
     }
 
@@ -28,7 +32,7 @@ signed main() {
     ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     for (int i = 1; i <= t; i++) {
         solve();
     }
