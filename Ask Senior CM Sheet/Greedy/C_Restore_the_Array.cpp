@@ -9,19 +9,23 @@ const int INF = 1e9;
 void solve() {
     int n;
     cin>>n;
-    string str;
-    cin>>str;
+    n--;
 
-    int mn = 0;
-    for(int i=1; i<n; i++){
-        if(str[i] <= str[mn]){
-            mn = i;
-        }
+    vector<int> arr(n);
+    for(int i=0; i<n; i++){
+        cin>>arr[i];
     }
 
-    string ans = str[mn] + str.substr(0, mn) + str.substr(mn+1);
-    cout<<ans<<"\n";
- 
+    vector<int> ans(n+1);
+    ans[0] = arr[0];
+    ans[n] = arr[n-1];
+    for(int i=1; i<=n-1; i++){
+        ans[i] = min(arr[i-1], arr[i]);
+    }
+    
+
+    for(int ele:ans) cout<<ele<<" ";
+    cout<<"\n";
 }
 
 signed main() {
