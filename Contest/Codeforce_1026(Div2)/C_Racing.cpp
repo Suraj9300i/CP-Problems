@@ -33,72 +33,40 @@ void solve() {
 
     int cur_height = 0;
     vector<int> ans(n);
-    int used = 0;
-    int unused = 0;
-    bool flag = true;
+    vector<int> unused;
 
     for(int i=0; i<n; i++){
         if(d[i] != -1){
-            ans[i] = d[i];
             cur_height += d[i];
-        }
-        else{
-            if(cur_height < obs[i].first){
-                ans[i] = 1;
-                cur_height += 1;
-            }else{
-                ans[i] = 0;
-                unused += 1;
-            }
+            ans[i] = d[i];
+        }else{
+            unused.push_back(i);
         }
 
-        if(cur_height > obs[i].second){
-            flag = false;
-            break;
+        while(cur_height < obs[i].first){
+            if(unused.empty()){
+                cout<<"-1\n";
+                return;
+            }
+            cur_height++;
+            ans[unused.back()] = 1;
+            unused.pop_back();
         }
-        
-        if(cur_height < obs[i].first){
-            int req = obs[i].first - cur_height;
-            if(unused > 0 && req <= unused){
-                unused -= req;
-                cur_height += req;
-                used += req;
+
+        while((cur_height + unused.size()) > obs[i].second){
+            if(unused.empty()){
+                cout<<"-1\n";
+                return;
             }
-            else{
-                flag = false;
-                break;
-            }
+            ans[unused.back()] = 0;
+            unused.pop_back();
         }
     }
 
-    if(flag){
-        if(used > 0){
-            int sum = 0;
-            for(int i=0; i<n; i++){
-                if(d[i] == -1 && ans[i] == 0 && used > 0){
-                    if((sum + 1) >= obs[i].first && (sum + 1) <= obs[i].second){
-                        sum++;
-                        used--;
-                        ans[i] = 1;
-                    }
-                }
-                else sum += ans[i];
-
-                if(sum < obs[i].first || sum > obs[i].second){
-                    flag = false;
-                    break;
-                }
-            }
-        }
-
-        if(!flag || used > 0) cout<<"-1\n";
-        else{
-            for(int ele:ans) cout<<ele<<" ";
-            cout<<"\n";
-        }
+    for(int i=0; i<n; i++){
+        cout<<ans[i]<<" ";
     }
-    else cout<<"-1\n";
-
+    cout<<"\n";
 }
 
 signed main() {
