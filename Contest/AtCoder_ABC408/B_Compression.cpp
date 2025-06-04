@@ -10,12 +10,22 @@
 using namespace std;
 
 const int mod = 1e9 + 7;
-const int INF = 1e18;
+const int INF = 1e9;
 
 void precompute(){}
 
 void solve() {
-    
+    int n;
+    cin>>n;
+    vector<int> arr(n);
+    set<int> st;
+    for(int i=0; i<n; i++){
+        cin>>arr[i];
+        st.insert(arr[i]);
+    }
+
+    cout<<st.size()<<"\n";
+    for(int ele:st) cout<<ele<<" ";
 
 }
 

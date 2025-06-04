@@ -10,7 +10,7 @@
 using namespace std;
 
 const int mod = 1e9 + 7;
-const int INF = 1e18;
+const int INF = 1e9;
 
 void precompute(){}
 

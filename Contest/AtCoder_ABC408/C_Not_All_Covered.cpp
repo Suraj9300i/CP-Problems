@@ -10,12 +10,31 @@
 using namespace std;
 
 const int mod = 1e9 + 7;
-const int INF = 1e18;
+const int INF = 1e9;
 
 void precompute(){}
 
 void solve() {
-    
+    int n, t, l, r;
+    cin>>n>>t;
+
+    vector<int> v(n+2, 0);
+    for(int i=0; i<t; i++){
+        cin>>l>>r;
+        v[l]++;
+        v[r+1]--;
+    }
+
+    for(int i=1; i<=n+1; i++){
+        v[i] += v[i-1];
+    }
+
+    int ans = INF;
+    for(int i=1; i<=n; i++){
+        ans = min(ans, v[i]);
+    }
+
+    cout<<ans;
 
 }
 

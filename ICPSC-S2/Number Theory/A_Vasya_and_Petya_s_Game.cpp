@@ -10,13 +10,34 @@
 using namespace std;
 
 const int mod = 1e9 + 7;
-const int INF = 1e18;
+const int INF = 1e16;
 
 void precompute(){}
 
-void solve() {
-    
+bool isPrime(int n){
+    for(int i=2; i*i <= n; i++){
+        if(n % i == 0) return false;
+    }
+    return true;
+}
 
+void solve() {
+    int n;
+    cin >> n;
+
+    vector<int> ans;
+    for(int i=2; i<=n; i++){
+        if(isPrime(i)){
+            for(int j=i; j<=n; j*=i){
+                ans.push_back(j);
+            }
+        }
+    }
+
+    cout<<ans.size()<<"\n";
+    for(int ele:ans){
+        cout<<ele<<" ";
+    }
 }
 
 signed main() {

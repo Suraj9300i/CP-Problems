@@ -10,13 +10,27 @@
 using namespace std;
 
 const int mod = 1e9 + 7;
-const int INF = 1e18;
+const int INF = 1e9;
 
 void precompute(){}
 
 void solve() {
-    
+    int n, s;
+    cin>>n>>s;
+    vector<int> arr(n);
+    for(int i=0;i<n; i++){
+        cin>>arr[i];
+    }
 
+    bool flag = arr[0] <= s;
+    for(int i=1; i<n; i++){
+        if(arr[i] - arr[i-1] > s){
+            flag = false;
+            break;
+        }
+    }
+
+    cout<<(flag ? "Yes" : "No");
 }
 
 signed main() {
