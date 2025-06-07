@@ -9,30 +9,31 @@
 #define int long long
 using namespace std;
 
-const int mod = 1e9;
+const int mod = 1e9 + 7;
 const int INF = 1e18;
-const int N = 1000;
-vector<vector<int>> ncr(N+1, vector<int>(N+1));
 
-void precompute(){
-    ncr[0][0] = 1;
-    ncr[1][0] = 1;
-    ncr[1][1] = 1;
-    for(int i=2; i<=N; i++){
-        ncr[i][0] = 1;
-        for(int j=1; j<=i; j++){
-            ncr[i][j] = (ncr[i-1][j] % mod + ncr[i-1][j-1] % mod) % mod;
-        }
-    }
-}
+void precompute(){}
 
 void solve() {
     int n;
     cin>>n;
-    for(int i=0; i<=n; i++){
-        cout<<ncr[n][i]<<" ";
+
+    int ans = 0;
+    for(int i=0; i<=60; i++){
+        int freq = 1LL << (i+1);
+        
+        int q = n / freq;
+        int r = n % freq;
+        int x = q, y = q;
+        if(r < (freq / 2)) x++;
+        else{
+            x++,  y++;
+        }
+
+        ans += (x + y - 1);
     }
-    cout<<"\n";
+
+    cout<<ans<<"\n";
 
 }
 
